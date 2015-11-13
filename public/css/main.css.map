@@ -1,0 +1,1 @@
+{"version":3,"sources":["css/main.less"],"names":[],"mappings":"AAAM,KAAN,KACE,QAAA,EACA,OAAA,EACA,MAAA,KACA,OAAA","file":"css/main.css","sourcesContent":["html, body {\r\n  padding: 0px;\r\n  margin: 0px;\r\n  width: 100%;\r\n  height: 100%;\r\n}"],"sourceRoot":"/source/"}

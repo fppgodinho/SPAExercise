@@ -20,18 +20,18 @@ module.exports = function(karma) {
         browserify: {
             extensions: ['.coffee'],
             transform: [ 'coffeeify' ],
-            debug: true
+            debug: false
         },
 
         browsers: ['PhantomJS'],
         phantomjsLauncher: {
-            // Have phantomjs exit if a ResourceError is encountered (useful if karma exits without killing phantom)
-            exitOnResourceError: false
+            exitOnResourceError: true
         },
 
-        reporters: ['progress'],
-        colors: true,
-        autoWatch: true,
-        singleRun: false
+        reporters:  ['mocha'],
+        logLevel:   karma.LOG_ERROR,
+        colors:     true,
+        autoWatch:  true,
+        singleRun:  true
     });
 };

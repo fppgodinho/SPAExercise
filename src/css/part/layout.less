@@ -1,0 +1,31 @@
+
+#MAIN {
+  display:          flex;
+  flex-direction:   column;
+
+  div {
+    //border: solid #000000 1px;
+  }
+
+  #MENU {
+    flex: 1;
+    height: 100px;
+  }
+
+  #MIDDLE {
+    display:          flex;
+    flex-direction:   row;
+    align-items:      stretch;
+
+    #LIST {
+      width: 200px;
+    }
+    #PRODUCT {
+      flex: 1;
+    }
+  }
+}
+
+@import "menu";
+@import "list";
+@import "product";

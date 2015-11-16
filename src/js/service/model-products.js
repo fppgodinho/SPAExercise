@@ -1,4 +1,6 @@
-module.exports  = function() {
+var angular     = require('angular');
+
+angular.module('spaExercise').factory('modelProducts', function() {
     var _productsFiltered   = [];
     var _products           = [];
 
@@ -44,4 +46,4 @@ module.exports  = function() {
     };
 
     return this;
-};
+});

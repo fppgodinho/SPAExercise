@@ -7,9 +7,13 @@ module.exports = function(karma) {
         ],
 
         files: [
+            'node_modules/angular/angular.js',
+            'node_modules/angular-mocks/angular-mocks.js',
+            'src/**/*.js',
             'test/**/*.coffee'
         ],
         preprocessors: {
+            'src/**/*.js': ['browserify'],
             'test/**/*.coffee': ['browserify']
         },
 

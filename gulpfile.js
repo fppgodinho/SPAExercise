@@ -45,7 +45,7 @@ gulp.task('client-copy-html', function()                                        
 });
 
 gulp.task('client-compile-jade', function()                                                                             {
-    return gulp.src(['./src/**/*.jade', '!**/part/*.*'])
+    return gulp.src(['./src/**/*.jade', '!**/template/*.*'])
         .pipe(jade({locals: {}}))
         .pipe(gulp.dest('./public/'))
 });

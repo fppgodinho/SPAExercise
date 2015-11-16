@@ -8,8 +8,8 @@
   }
 
   #MENU {
-    flex: 1;
-    height: 100px;
+    flex:     1;
+    padding:  2px;
   }
 
   #MIDDLE {
@@ -18,7 +18,23 @@
     align-items:      stretch;
 
     #LIST {
-      width: 200px;
+      display:          flex;
+      flex-direction:   column;
+      width:            400px;
+
+      .product {
+        display:  block;
+        padding: 0px;
+
+        .update {
+          display:  inline-block;
+          padding:  2px;
+        }
+        .delete {
+          display:  inline-block;
+          padding:  2px;
+        }
+      }
     }
     #PRODUCT {
       flex: 1;

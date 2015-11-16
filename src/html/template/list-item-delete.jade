@@ -1,0 +1,11 @@
+div
+    div(class="modal-header")
+        h3(class="modal-title") Delete Product '{{name}}' ?
+    div(class="modal-body")
+        h1(class="modal-text") ID: {{id}}
+        h1(class="modal-text") Name: {{name}}
+        h1(class="modal-text") Description: {{description}}
+
+    div(class="modal-footer")
+        button(class="btn btn-primary" type="button" ng-click="ok()") OK
+        button(class="btn btn-warning" type="button" ng-click="cancel()") Cancel

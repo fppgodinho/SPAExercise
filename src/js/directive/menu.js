@@ -23,7 +23,6 @@ angular.module('spaExercise').controller('menuNewProductController', ['$scope', 
 
     $scope.ok           = function ()                                                                                   {
         modelProducts.create({name: $scope.name, description: $scope.description}, function (err, id){
-            console.log(err, id);
             $uibModalInstance.close();
         });
     };

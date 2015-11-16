@@ -10,7 +10,7 @@ angular.module('spaExercise').factory('modelProducts', function() {
 
     function _parseProducts()                                                                                           {
         _productsFiltered.length = 0;
-        for (var i in _products) if (_products[i]) _productsFiltered[i] = _products[i];
+        for (var i in _products) if (_products[i]) _productsFiltered.push(_products[i]);
     }
 
     this.create = function(raw, callback)                                                                              {

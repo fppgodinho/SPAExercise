@@ -11,9 +11,11 @@ var sourcemaps  = require('gulp-sourcemaps');
 var streamify   = require('gulp-streamify');
 var uglify      = require('gulp-uglify');
 
+var Server      = require('karma').Server;
+
 gulp.task('default', ['client']);
 
-gulp.task('client', ['client-compile', 'client-copy-html', 'client-compile-jade', 'client-compile-less'], function()  {
+gulp.task('client', ['client-compile', 'client-copy-html', 'client-compile-jade', 'client-compile-less'], function()    {
     console.log("\n Watching code:\n");
     //
     return gulp.watch('./src/**/*.*', ['client-compile', 'client-copy-html', 'client-compile-jade', 'client-compile-less'], function(){
@@ -55,4 +57,12 @@ gulp.task('client-compile-less', function () {
         .pipe(minifyCSS())
         .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest('./public/'));
+});
+
+
+gulp.task('test', function (done) {
+    new Server({
+        configFile: __dirname + '/karma.conf.js',
+        action: 'run'
+    }, done).start();
 });

@@ -13,11 +13,20 @@ angular.module('spaExercise').factory('modelProducts', function() {
         for (var i in _products) if (_products[i]) _productsFiltered[i] = _products[i];
     }
 
-    this.create = function(data, callback)                                                                              {
+    this.create = function(raw, callback)                                                                              {
+        var data = {
+            name: raw.name,
+            description: raw.description
+        };
+
         _products.push(data);
+
+        var id = _products.length - 1;
+        Object.defineProperty(data, 'id', {get: function(){ return id; }});
+
         _parseProducts();
         //
-        if (typeof callback === 'function') callback(null, _products.length-1);
+        if (typeof callback === 'function') callback(null, id);
     };
 
     this.read   = function(id, callback)                                                                                {

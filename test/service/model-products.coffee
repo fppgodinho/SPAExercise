@@ -15,20 +15,24 @@ describe "The products model...", ->
     it "should have a 'list' property of type array", -> modelProducts.list.should.be.an 'array'
 
     describe "A new product...", ->
-        product = {
+        product = null
+        rawData = {
             name: 'name'
             description: 'description'
         }
         id = null;
-
-        beforeEach (done) -> modelProducts.create product, (err, i) ->
+        
+        beforeEach (done) -> modelProducts.create rawData, (err, i) ->
             id = i
-            done();
+            modelProducts.read i, (err, data) ->
+                product = data
+                done();
 
         it "should have id set to '0'", -> id.should.equal 0
+        it "should have a readonly property called id set to '0'", -> product.id.should.equal 0
         it "should b the only item on the list", -> modelProducts.list.length.should.equal 1
         it "should have the same data used when created ", (done)-> modelProducts.read id, (err, data) ->
-            data.should.deep.equal product
+            data.should.deep.equal rawData
             done();
         it "should have the name set to 'Jhon Snow' after being updated", (done)->
             modelProducts.update id, {name: 'Jhon Snow', description: ''}, ->
@@ -37,6 +41,6 @@ describe "The products model...", ->
                     done();
         it 'should be deletable', (done) ->modelProducts.delete id, (err, data) ->
             expect(err).to.be.null
-            data.should.deep.equal product
+            data.should.deep.equal rawData
             modelProducts.list.length.should.equal 0
             done();

@@ -1,10 +1,13 @@
-module.exports = function(karma) {
+module.exports = function(karma)                                                                                        {
     karma.set({
         frameworks: [
             'mocha',
             'chai',
             'browserify'
         ],
+        plugins: ['karma-*', {
+            'reporter:noTraceStackReporter': ['factory', noTraceStackReporterFactory]
+        }],
 
         files: [
             'node_modules/angular/angular.js',
@@ -13,13 +16,14 @@ module.exports = function(karma) {
             'test/**/*.coffee'
         ],
         preprocessors: {
+            'src/**/*.jade': ['browserify'],
             'src/**/*.js': ['browserify'],
             'test/**/*.coffee': ['browserify']
         },
 
         browserify: {
-            extensions: ['.coffee'],
-            transform: [ 'coffeeify' ],
+            extensions: ['.coffee', '.jade'],
+            transform: [ 'coffeeify', 'jadeify' ],
             debug: false
         },
 
@@ -29,9 +33,13 @@ module.exports = function(karma) {
         },
 
         reporters:  ['mocha'],
+        mochaReporter: {
+            output: 'noFailures'
+        },
+
         logLevel:   karma.LOG_ERROR,
         colors:     true,
         autoWatch:  true,
-        singleRun:  true
+        singleRun:  false
     });
 };

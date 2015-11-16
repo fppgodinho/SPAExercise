@@ -18,9 +18,15 @@ gulp.task('default', ['client']);
 gulp.task('client', ['client-compile', 'client-copy-html', 'client-compile-jade', 'client-compile-less'], function()    {
     console.log("\n Watching code:\n");
     //
-    return gulp.watch('./src/**/*.*', ['client-compile', 'client-copy-html', 'client-compile-jade', 'client-compile-less'], function(){
-        console.warn("\n --- Code has been edited, recompiling...");
+    var watcher = gulp.watch('./src/**/*.*', ['client-compile', 'client-copy-html', 'client-compile-jade', 'client-compile-less', function(){
+        console.warn("\n --- ... recompiled!\n");
+    }]);
+
+    watcher.on('change', function(event) {
+        console.warn("\n --- Code has been edited, recompiling...\n");
     });
+
+    return watcher;
 });
 
 gulp.task('client-compile', function()                                                                                  {
@@ -53,7 +59,12 @@ gulp.task('client-compile-jade', function()                                     
 gulp.task('client-compile-less', function () {
     gulp.src(['./src/**/*.less', '!**/part/*.*'])
         .pipe(sourcemaps.init())
-        .pipe(less())
+        .pipe(less({
+            paths: [
+                '.',
+                './node_modules/bootstrap-less'
+            ]
+        }))
         .pipe(minifyCSS())
         .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest('./public/'));

@@ -1,0 +1,13 @@
+div
+    div(class="modal-header")
+        h3(class="modal-title") New Product
+    div(class="modal-body")
+        div(class="form-group")
+            label(for="NEW_NAME") Name
+            input#NEW_NAME(type="text" class="form-control" ng-model="name" placeholder="Name")
+            label(for="NEW_DESCRIPTION") Description
+            input#NEW_DESCRIPTION(type="text" class="form-control" ng-model="description" placeholder="Description")
+
+    div(class="modal-footer")
+        button(class="btn btn-primary" type="button" ng-click="ok()") OK
+        button(class="btn btn-warning" type="button" ng-click="cancel()") Cancel

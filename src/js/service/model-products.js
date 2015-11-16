@@ -13,7 +13,7 @@ angular.module('spaExercise').factory('modelProducts', function() {
         for (var i in _products) if (_products[i]) _productsFiltered.push(_products[i]);
     }
 
-    this.create = function(raw, callback)                                                                              {
+    this.create = function(raw, callback)                                                                               {
         var data = {
             name: raw.name,
             description: raw.description
@@ -36,7 +36,7 @@ angular.module('spaExercise').factory('modelProducts', function() {
     };
 
     this.update = function(id, data, callback)                                                                          {
-        if (id >= 0 && id < _products.length) {
+        if (id >= 0 && id < _products.length)                                                                           {
             _products[id] = data;
             _parseProducts();
         } else data = null;

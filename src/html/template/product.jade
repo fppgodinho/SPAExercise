@@ -1,3 +1,9 @@
-div#PRODUCT
-    input#NAME(type="text", value="Name")
-    input#DESCRIPTION(type="text", value="Description")
+div#PRODUCT(class="form-group" ng-show="isVisible")
+    div ID: {{id}}
+    div
+        label(for="NAME") Name
+        input#NAME(type="text", value="Name", ng-model="name")
+    div
+        label(for="DESCRIPTION") Description
+        textarea#DESCRIPTION(type="text", value="Description", ng-model="description")
+    button(class="btn btn-primary" type="button" ng-click="save()") UPDATE

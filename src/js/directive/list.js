@@ -7,15 +7,6 @@ angular.module('spaExercise').directive('list', function ()                     
         template:   require('./../../html/template/list.jade'),
         controller: ['$scope', 'modelProducts', function($scope, modelProducts)                                         {
             $scope.items = modelProducts.list;
-
-
-            $scope.$watch(function(){
-                return modelProducts.list
-            }, function(){
-                console.log(modelProducts.list);
-            }, true)
-
-
         }]
     }
 });
@@ -29,7 +20,7 @@ angular.module('spaExercise').directive('listItem', function ()                 
         controller: ['$scope', '$uibModal', function($scope, $uibModal)                                                 {
             $scope.name     = $scope.listItem.name;
 
-            $scope.update   = function()                                                                                {
+            $scope.select   = function()                                                                                {
 
             };
 

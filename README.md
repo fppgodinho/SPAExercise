@@ -3,7 +3,7 @@ Single Page Application Based on AngularJS
 
 public link: https://rawgit.com/fppgodinho/spa-exercise/develop/public/index.html
 
-Development Requirements:
+Development Requirements:<br/>
     Base:
         node.js ^4.2.1 - https://nodejs.org/en/download/
         npm ^2.14.7 - https://nodejs.org/en/download/

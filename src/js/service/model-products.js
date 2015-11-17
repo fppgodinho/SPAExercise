@@ -10,19 +10,17 @@ angular.module('spaExercise').factory('modelProducts', function() {
 
     function _parseProducts()                                                                                           {
         _productsFiltered.length = 0;
-        for (var i in _products) if (_products[i]) _productsFiltered.push(_products[i]);
+        for (var i in _products) if (_products[i]) {
+            var item = JSON.parse(_products[i]);
+            item.id = i;
+            _productsFiltered.push(item);
+        }
     }
 
     this.create = function(raw, callback)                                                                               {
-        var data = {
-            name: raw.name,
-            description: raw.description
-        };
-
-        _products.push(data);
+        _products.push(JSON.stringify({name: raw.name, description: raw.description}));
 
         var id = _products.length - 1;
-        Object.defineProperty(data, 'id', {get: function(){ return id; }});
 
         _parseProducts();
         //
@@ -31,13 +29,17 @@ angular.module('spaExercise').factory('modelProducts', function() {
 
     this.read   = function(id, callback)                                                                                {
         var data = (id >= 0 && id < _products.length)?_products[id]:null;
+        if (data) {
+            data = JSON.parse(data);
+            data.id = id;
+        } else data = null;
         //
         if (typeof callback === 'function') callback(!data?'Item not found':null, data);
     };
 
     this.update = function(id, data, callback)                                                                          {
         if (id >= 0 && id < _products.length)                                                                           {
-            _products[id] = data;
+            _products[id] = JSON.stringify({name: data.name, description: data.description});
             _parseProducts();
         } else data = null;
         //

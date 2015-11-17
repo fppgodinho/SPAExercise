@@ -2,7 +2,7 @@ inject = angular.mock.inject;
 module = angular.mock.module;
 
 describe "The products model...", ->
-    modelProducts = null;
+    modelProducts = null
 
     beforeEach -> module 'spaExercise'
     beforeEach -> inject (_modelProducts_) -> modelProducts = _modelProducts_
@@ -26,21 +26,23 @@ describe "The products model...", ->
             id = i
             modelProducts.read i, (err, data) ->
                 product = data
-                done();
+                done()
 
         it "should have id set to '0'", -> id.should.equal 0
         it "should have a readonly property called id set to '0'", -> product.id.should.equal 0
         it "should b the only item on the list", -> modelProducts.list.length.should.equal 1
         it "should have the same data used when created ", (done)-> modelProducts.read id, (err, data) ->
-            data.should.deep.equal rawData
-            done();
+            data.should.have.property 'name', rawData.name
+            data.should.have.property 'description', rawData.description
+            done()
         it "should have the name set to 'Jhon Snow' after being updated", (done)->
             modelProducts.update id, {name: 'Jhon Snow', description: ''}, ->
                 modelProducts.read id, (err, data)->
-                    data.name.should.equal 'Jhon Snow';
-                    done();
+                    data.name.should.equal 'Jhon Snow'
+                    done()
         it 'should be deletable', (done) ->modelProducts.delete id, (err, data) ->
             expect(err).to.be.null
-            data.should.deep.equal rawData
+            data.should.have.property 'name', rawData.name
+            data.should.have.property 'description', rawData.description
             modelProducts.list.length.should.equal 0
-            done();
+            done()

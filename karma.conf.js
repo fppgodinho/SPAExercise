@@ -5,20 +5,17 @@ module.exports = function(karma)                                                
             'chai',
             'browserify'
         ],
-        plugins: ['karma-*', {
-            'reporter:noTraceStackReporter': ['factory', noTraceStackReporterFactory]
-        }],
 
         files: [
             'node_modules/angular/angular.js',
             'node_modules/angular-mocks/angular-mocks.js',
             'src/**/*.js',
-            'test/**/*.coffee'
+            'test/tdd/**/*.coffee'
         ],
         preprocessors: {
             'src/**/*.jade': ['browserify'],
             'src/**/*.js': ['browserify'],
-            'test/**/*.coffee': ['browserify']
+            'test/tdd/**/*.coffee': ['browserify']
         },
 
         browserify: {

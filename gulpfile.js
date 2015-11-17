@@ -71,7 +71,7 @@ gulp.task('client-compile-less', function () {
 });
 
 
-gulp.task('test', function (done) {
+gulp.task('tdd', function (done) {
     new Server({
         configFile: __dirname + '/karma.conf.js',
         action: 'run'

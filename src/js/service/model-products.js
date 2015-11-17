@@ -49,6 +49,7 @@ angular.module('spaExercise').factory('modelProducts', function() {
     this.delete = function(id, callback)                                                                                {
         var data = (id >= 0 && id < _products.length)?_products[id]:null;
         if (data)                                                                                                       {
+            data = JSON.parse(data);
             _products[id] = null;
             _parseProducts();
         }

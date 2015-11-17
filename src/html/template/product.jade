@@ -1,0 +1,16 @@
+div#PRODUCT(ng-show="isVisible")
+    div(class="row")
+        label(for="ID" class="col-xs-2 col-md-2 control-label") ID:
+        div(class="col-xs-10 col-md-10 input")
+            input#ID(class="form-control" ng-model="id" readonly)
+    div(class="row")
+        label(for="NAME" class="col-xs-2 col-md-2 control-label") Name
+        div(class="col-xs-10 col-md-10 input")
+            input#NAME(type="text" class="form-control" value="Name" ng-model="name")
+    div(class="row")
+        label(for="DESCRIPTION" class="col-xs-2 col-md-2 control-label") Description
+        div(class="col-xs-10 col-md-10 input")
+            textarea#DESCRIPTION(type="text" class="form-control" value="Description" ng-model="description")
+    div(class="row")
+        button(class="col-xs-10 col-md-10 col-xs-offset-2 col-md-offset-2 btn btn-primary" type="button" ng-click="save()") UPDATE
+
